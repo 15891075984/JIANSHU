@@ -20,7 +20,6 @@ const Nav=styled.div`
             height:100%;
             margin:0 auto;
             box-sizing:border-box;
-            box-sizing:border-box;
             padding-right:70px;
             `
 const Nav_Item=styled.div`
@@ -38,11 +37,23 @@ const Nav_Item=styled.div`
 const SearchWrapper=styled.div`
             float:left;
             position:relative;
-            border:none;
+            margin-top:2px;
+            &.slide-enter{
+                transition: all 200ms ease-out;
+            }
+            &.slide-enter-active{
+                width:300px;
+            }
+            &.slide-exit{
+                transition: all 200ms ease-out;
+            }
+            &.slide-exit-active{
+                width:240px;
+            }
             .iconfont{
                 position:absolute;
                 top:13px;
-                right:8px;
+                right:15px;
                 width:30px;
                 border-radius:19px;
                 line-height:30px;
@@ -58,12 +69,11 @@ const Nav_Search=styled.input.attrs({
     })`     
             width:240px;
             height:38px;
-            padding:0px 20px;
-            padding-right:45px;
+            padding:0px 43px 0px 20px;
             margin-left:20px;
             margin-top:9px;
             border-radius:19px;
-            box-sizing:border-box;
+            
             border:none;
             background:#eee;
             font-size:14px;
@@ -71,7 +81,7 @@ const Nav_Search=styled.input.attrs({
                 color:#999
             }
             &.focus{
-                width:300px;
+                width:280px;
             }`
 const Addition=styled.div`
     position:absolute;
@@ -84,6 +94,7 @@ const Button=styled.div`
     padding:0 20px;
     margin-top:9px;
     margin-right:20px;
+    box-sizing:border-box;
     border:1px solid #ec6149;
     line-height:38px;
     border-radius:19px;

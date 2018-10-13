@@ -22,18 +22,22 @@ class Header extends React.Component{
                        <Nav_Item className="right">
                            <i className="iconfont">&#xe636;</i>
                        </Nav_Item>
-                       <CSSTransition in={this.state.focused}
-                                      timeout={200}
-                                      className="slide">
-                            <SearchWrapper>
+                       
+                        <SearchWrapper>
+                                    <CSSTransition
+                                        in={this.state.focused}
+                                        timeout={200}
+                                        classNames="slide"
+                                    ><div>
                                     <Nav_Search 
                                         className={this.state.focused?"focus":""}
                                         onFocus={this.handleInputFocus} 
                                         onBlur={this.handleInputBlur}>
                                     </Nav_Search>
                                     <i className={this.state.focused?"focus iconfont":"iconfont"}>&#xe634;</i>
-                            </SearchWrapper>
-                       </CSSTransition>
+                                    </div>
+                                    </CSSTransition>
+                        </SearchWrapper>
                    </Nav>
                     <Addition>
                         <Button className='writting'>写文章</Button>
