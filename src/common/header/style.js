@@ -36,6 +36,7 @@ const Nav_Item=styled.div`
             `
 const SearchWrapper=styled.div`
             float:left;
+            border:none;
             position:relative;
             margin-top:2px;
             &.slide-enter{
@@ -48,7 +49,7 @@ const SearchWrapper=styled.div`
                 transition: all 200ms ease-out;
             }
             &.slide-exit-active{
-                width:240px;
+                width:200px;
             }
             .iconfont{
                 position:absolute;
@@ -67,13 +68,12 @@ const SearchWrapper=styled.div`
 const Nav_Search=styled.input.attrs({
             placeholder:"搜索"
     })`     
-            width:240px;
+            width:200px;
             height:38px;
-            padding:0px 43px 0px 20px;
+            padding:0px 48px 0px 20px;
             margin-left:20px;
             margin-top:9px;
             border-radius:19px;
-            
             border:none;
             background:#eee;
             font-size:14px;
@@ -82,6 +82,7 @@ const Nav_Search=styled.input.attrs({
             }
             &.focus{
                 width:280px;
+                border:0px;
             }`
 const Addition=styled.div`
     position:absolute;
@@ -115,5 +116,4 @@ export {
     Addition,
     Button,
     SearchWrapper,
-
 }
