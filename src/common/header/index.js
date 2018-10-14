@@ -1,8 +1,35 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import{HeaderWrapper,Logo,Nav,Nav_Item,Nav_Search,Addition,Button,SearchWrapper} from './style.js'
+import{HeaderWrapper,
+    Logo,Nav,Nav_Item,
+    Nav_Search,Addition,
+    Button,SearchWrapper,
+    SearchInfo,SearchInfoTitle,
+    SearchInfoSwitch,
+    SearchInfoItem,
+
+    } from './style.js'
 import {actionCreators} from './store'
 import { CSSTransition } from 'react-transition-group';
+const search_info=(show)=>{
+    if(!show)return null;
+    else{
+    return (<SearchInfo>
+        <SearchInfoTitle>
+            热门搜索
+        </SearchInfoTitle>
+        <SearchInfoSwitch>
+            换一批
+        </SearchInfoSwitch>
+        <SearchInfoItem>行距杯2018征文</SearchInfoItem>
+        <SearchInfoItem>区块链</SearchInfoItem>
+        <SearchInfoItem>react</SearchInfoItem>
+        <SearchInfoItem>vue</SearchInfoItem>
+        <SearchInfoItem>anglare</SearchInfoItem>
+        <SearchInfoItem>j's</SearchInfoItem>
+    </SearchInfo>)
+}
+}
 const Header =(props)=>{
         return (
             <div>
@@ -21,15 +48,17 @@ const Header =(props)=>{
                                         in={props.focused}
                                         timeout={200}
                                         classNames="slide"
-                                    ><div>
-                                    <Nav_Search 
-                                        className={props.focused?"focus":""}
-                                        onFocus={props.handleInputFocus} 
-                                        onBlur={props.handleInputBlur}>
-                                    </Nav_Search>
-                                    <i className={props.focused?"focus iconfont":"iconfont"}>&#xe634;</i>
+                                    >
+                                    <div>
+                                            <Nav_Search 
+                                                className={props.focused?"focus":""}
+                                                onFocus={props.handleInputFocus} 
+                                                onBlur={props.handleInputBlur}>
+                                            </Nav_Search>
+                                            <i className={props.focused?"focus iconfont":"iconfont"}>&#xe634;</i>
                                     </div>
                                     </CSSTransition>
+                                    {search_info(props.focused)}
                         </SearchWrapper>
                    </Nav>
                     <Addition>

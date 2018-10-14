@@ -39,6 +39,7 @@ const SearchWrapper=styled.div`
             border:none;
             position:relative;
             margin-top:2px;
+            
             &.slide-enter{
                 transition: all 200ms ease-out;
             }
@@ -65,6 +66,40 @@ const SearchWrapper=styled.div`
                     color:#fff;
                 }
             }`
+const SearchInfo=styled.div`
+            position:absolute;
+            top:60px;
+            width:240px;
+            left:20px;
+            box-shadow:0 0 8px rgba(0,0,0,.2);
+            padding:0 20px;
+            line-height:20px;
+            overflow:hidden;
+            padding-bottom:10px;
+            `
+const SearchInfoTitle=styled.div`
+            margin-top:17px;
+            line-height:20px;
+            margin-bottom:15px;
+            font-size:14px;
+            color:#969696;`
+const SearchInfoSwitch=styled.span`
+            float:right;
+            color:#969696;
+            margin-top:-32px;
+            font-size:13px;`
+const SearchInfoItem=styled.a`
+            line-height:20px;
+            color:#969696;
+            padding:0 5px;
+            border-radius:3px;
+            display:block;
+            float:left;
+            font-size:12px;
+            border:1px solid #ddd;
+            margin-right:10px;
+            margin-bottom:10px;
+            `
 const Nav_Search=styled.input.attrs({
             placeholder:"搜索"
     })`     
@@ -116,4 +151,8 @@ export {
     Addition,
     Button,
     SearchWrapper,
+    SearchInfo,
+    SearchInfoTitle,
+    SearchInfoSwitch,
+    SearchInfoItem,
 }
