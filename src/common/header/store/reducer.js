@@ -1,7 +1,7 @@
 import * as constants from './constants'
 import{ fromJS } from 'immutable'
 
-const defaultState=fromJS({
+const defaultState=fromJS({//使用immutable
     focused:false
 });
 export default(state=defaultState,action)=>{
