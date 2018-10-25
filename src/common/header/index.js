@@ -7,28 +7,32 @@ import{HeaderWrapper,
     SearchInfo,SearchInfoTitle,
     SearchInfoSwitch,
     SearchInfoItem,
-
     } from './style.js'
-import {actionCreators} from './store'
+import {actionCreators} from './store';
+import {Link} from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group';
+import "../../statics/font_5/iconfont.js"
 
 class Header extends React.Component{
     constructor(props){
         super(props)
     }
     search_info(show){
-        if(!this.props.focused)return null;
-        else{
-        return (<SearchInfo>
-                    <SearchInfoTitle>热门搜索</SearchInfoTitle>
-                    <SearchInfoSwitch>换一批</SearchInfoSwitch>
-                    {
-                        this.props.list.map((item)=>{
-                        return (<SearchInfoItem key={item}>{item}</SearchInfoItem> )
-                    })
-                    }
-                </SearchInfo>)
-    }
+        const newList=[];
+        const list=this.props.list.toJS();
+        const page=this.props.page;
+        for(let i=(page-1)*10;i<page*10;i++){
+            newList.push(
+                <SearchInfoItem key={list[i]}>{list[i]}</SearchInfoItem>
+            )
+        }
+        if(this.props.focused||this.props.mouseIn){return (
+        <SearchInfo onMouseEnter={this.props.handleMouseEnter}
+            onMouseLeave={this.props.handleMouseLeave}>
+            <SearchInfoTitle onClick={()=>{console.log(this.props.page)}}>热门搜索</SearchInfoTitle>
+            <SearchInfoSwitch onClick={()=>this.props.handleChangePage(this.props.page,this.props.totalPage)}>换一批</SearchInfoSwitch>
+            {newList}
+        </SearchInfo>)};
     }
     render(){
         return (
@@ -36,9 +40,9 @@ class Header extends React.Component{
                 <HeaderWrapper>
                    <Logo/>
                    <Nav>
-                       <Nav_Item className="left active">首页</Nav_Item>
-                       <Nav_Item className="left">下载App</Nav_Item>
-                       <Nav_Item className="right">登陆</Nav_Item>
+                       <Link to={"/"}><Nav_Item className="left active">首页</Nav_Item></Link>
+                       <Link to={"/download"}><Nav_Item className="left">下载App</Nav_Item></Link>
+                       <Link to={"/login"}><Nav_Item className="right">登陆</Nav_Item></Link>
                        <Nav_Item className="right">
                            <i className="iconfont">&#xe636;</i>
                        </Nav_Item>
@@ -73,7 +77,10 @@ class Header extends React.Component{
 const mapStateToProps=(state)=>{
     return {
         focused:state.get("header").get("focused"),
-        list:state.get("header").get("list")
+        list:state.get("header").get("list"),
+        page:state.get("header").get("page"),
+        totalPage:state.get("header").get("totalPage"),
+        mouseIn:state.get("header").get("mouseIn")
     }
 }
 const mapDispatchToProps=(dispatch)=>{
@@ -84,6 +91,19 @@ const mapDispatchToProps=(dispatch)=>{
         },
         handleInputBlur(){
             dispatch(actionCreators.searchBlur());
+        },
+        handleMouseEnter(){
+            dispatch(actionCreators.mouseEnter());
+        },
+        handleMouseLeave(){
+            dispatch(actionCreators.mouseLeave());
+        },
+        handleChangePage(page,totalPage){
+            if(page<totalPage){
+                dispatch(actionCreators.changePage(page+1))
+            }else{
+                dispatch(actionCreators.changePage(1))
+            }
         }
     }
 }

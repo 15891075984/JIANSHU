@@ -22,9 +22,13 @@ const Nav=styled.div`
             box-sizing:border-box;
             padding-right:70px;
             `
-const Nav_Item=styled.div`
+const Nav_Item=styled.a.attrs({
+            href:"#"
+    })`
             line-height:56px;
             padding:0 15px;
+            text-decoration:none;
+            color:#333;
             font-size:17px;
             &.left{
                 float:left
@@ -68,6 +72,8 @@ const SearchWrapper=styled.div`
             }`
 const SearchInfo=styled.div`
             position:absolute;
+            z-index:15;
+            background:#fff;
             top:60px;
             width:240px;
             left:20px;

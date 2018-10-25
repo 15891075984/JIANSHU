@@ -2,16 +2,25 @@ import * as constants from './constants'
 import {fromJS} from 'immutable'
 import axios from 'axios'
 export const searchFocus=()=>({
-    type:constants.SEARCH_FOCUS   //直接返回出去（{}）
+    type:constants.SEARCH_FOCUS   
 })
-
 export const searchBlur=()=>({
-    type:constants.SEARCH_BLUR  //直接返回出去（{}）
+    type:constants.SEARCH_BLUR  
 })
-
-export const changList=(data)=>({
+export const mouseEnter=()=>({
+    type:constants.MOUSE_ENTER
+})
+export const mouseLeave=()=>({
+    type:constants.MOUSE_LEAVE
+})
+export const changePage=(page)=>({
+    type:constants.CHANGE_PAGE,
+    page
+})
+const changList=(data)=>({
     type:constants.CHANGE_LIST,
-    data:fromJS(data)  //转化immutable
+    data:fromJS(data),
+    totalPage:Math.ceil(data.length/10) //转化immutable
 })
 export const getList=()=>{
     return (dispatch)=>{
