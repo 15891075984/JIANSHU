@@ -9,7 +9,6 @@ const defaultState=fromJS({
 export default(state=defaultState,action)=>{
     switch(action.type){
         case "changBodyData":
-        console.log(action)
         return state.merge({
             actor_recom_Lists:fromJS(action.actor_recom_Lists),
             topicList:fromJS(action.topicList),
